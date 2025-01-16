@@ -2,3 +2,5 @@
 This is the starter code that we will be using to learn python, git, and vscode
 
 ## This game was created by Amy Diaz
+
+## THis is a text based adventure game
