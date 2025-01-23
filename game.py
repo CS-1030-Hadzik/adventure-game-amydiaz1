@@ -1,6 +1,6 @@
 '''
 Adventure Game
-Author: Amy DIaz
+Author: Amy Diaz
 Version: 1.0
 Description:
 This is a text-based adventure game where the player makes choices to navigate through a mysterious forest.
