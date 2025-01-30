@@ -8,10 +8,9 @@ This is a text-based adventure game where the player makes choices
 to navigate through a mysterious forest.
 '''
 
-
 # Welcome message and introducton
 print("Welcome to the Adventure Game!")  
-print("Your journey begins here...")
+print('Your journey begins here...')
 
 # Ask for the player's name
 player_name = input("What is your name, adventurer? ")
@@ -32,6 +31,12 @@ unknown...
 print(starting_area)
 
 # Ask the player for their first decision
-decision = input("Do you wish to take the path (yes or no): ")
+decision = input("Do you wish to take the path (yes or no): ").lower()
 
-print(decision) 
+# Respond based on the player's decision
+if decision == "yes":
+    print (f"Brave choice, {player_name}! You step on the path and venture foward")
+elif decision == "no":
+    print (f"{player_name} , you decide to wait. Perhaps courge will find you later.")
+else:
+    print("Confused, you stand still, unsure of what to do.")
