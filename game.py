@@ -33,6 +33,12 @@ print(starting_area)
 # Ask the player for their first decision
 decision = input("Do you wish to take the path (yes or no): ").lower()
 
+# Invalied reponse loop until they give a valid response 
+while decision not in ["yes", "no"]: 
+    print("Invalid choice. Please type 'yes'or'no'.")
+    # option for the user to make a new decision
+    decision = input("Do you wish to take the path (yes or no): ").lower()
+
 # Respond based on the player's decision
 if decision == "yes":
     print (f"Brave choice, {player_name}! You step on the path and venture foward")
