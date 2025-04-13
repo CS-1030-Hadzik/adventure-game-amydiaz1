@@ -48,7 +48,6 @@ def stay_still(player):
     print(f"{player.name}, your health is now {player.health}.")
 
 
-
 def explore_dark_woods(player):
         print(f"{player.name}, you step into the dark woods. The trees whisper as you walk deeper.")
 
@@ -63,18 +62,18 @@ def explore_dark_woods(player):
 def explore_mountain_pass(player):
     print(f"{player.name}, you head toward the mountain pass...")
     if "map" not in player.inventory:
-        add_to_inventory(player, "map")
+        add_to_inventory("map")
         player.has_map = True
     else:
         print("You've already picked up")
 
 def explore_cave(player):
-        print("You walk up to the entracne of the cave."
+        print("You walk up to the enterance of the cave."
         "It appears to be dark inside.")
         if player.has_lantern == True:
             print(f"{player.name} you bravely enter the cave")
             print("Inside the cave, you find a treasure chest!")
-            add_to_inventory(player, "Treasure")
+            add_to_inventory("Treasure")
 
         if player.has_lantern == False:
             print("You can't see far enough to travel safely.")
