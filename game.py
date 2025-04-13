@@ -156,6 +156,6 @@ while True:
     play_again = input("Do you want to coninue exploring? (yes or no):").lower()
 
     if play_again != "yes":
-        print(f"Thanks for playing, {player.name}, see you next time.")
+        print(f"Thanks for playing, {player.name}, see you next time!")
 
         break # Exit the loop and end the game
