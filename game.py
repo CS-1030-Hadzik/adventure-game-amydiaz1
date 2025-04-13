@@ -2,20 +2,25 @@
 DOCSTRING
 Adventure Game
 Author: Amy Diaz
-Version: 1.0
+Version: 2.0
 Description:
 This is a text-based adventure game where the player makes choices
 to navigate through a mysterious forest.
 '''
 
-# TODO: Create an empty list called `inventory` at the top of your code.
-#       This will store items the player picks up during the game.
+#------------------------------------------------------------------------
+# Player class to sotre player info and game state
+# ----------------------------------------------------------------------
+class Player: 
+    # initializer - constructor
+    def __init__(self, name):
+        self.name = name 
+        self.inventory = []
+        self.health = 100 
+        self.has_map = False 
+        self.has_lantern = False 
 
-# ---------------
-# Global inventory list
-# This will hold items the player collects
-# --------------
-inventory = []
+
 
 # ---------------
 # Function: welcome_player
@@ -28,12 +33,13 @@ def welcome_player():
     print('Your journey begins here...')
 
     # Ask for the player's name
-    player_name = input("What is your name, adventurer? ")
+    name = input("What is your name, adventurer?")
+    player = Player(name)
 
     # Use an f-string to display the same message in a more readable way 
-    print(f"Welcome, {player_name}! Your journey begins now.")
+    print(f"Welcome, {player.name}! Your journey begins now.")
 
-    return player_name 
+    return player
 
 # ---------------
 # Function: describe_area
@@ -56,7 +62,7 @@ def describe_area():
 # ----------------------------------------------------------
 
 def add_to_inventory(item):
-    inventory.append(item)
+    player.inventory.append(item)
     print(f"You picked up a {item}!")
 
 #------------------------------------------------------------
@@ -65,7 +71,7 @@ def add_to_inventory(item):
 #------------------------------------------------------------
 
 
-player_name = welcome_player()
+player = welcome_player()
 describe_area()
 
 #------------------------------------------------------------
@@ -79,25 +85,46 @@ while True:
     print("\nYou see two paths ahead:")
     print("\t1. Take the left path into the dark woods.")
     print("\t2. Take the right path toward the mountain pass.")
-    print("\t3. Stay where you are.")
+    print("\t3. Explore a nearby cave.")
+    print("\t4. Stay where you are.")
     print("\tType 'i' to view your inventory.")
 
 
-    decision = input("What will you do (1,2,3 or i): ").lower()
+    decision = input("What will you do (1,2,3,4 or i): ").lower()
 
+    # open the inventory 
     if decision == 'i':
-        print("inventory", inventory )
+        print("inventory", player.inventory)
         continue
 
+     # take the left path --- Dark woods
     if decision == "1":
-        print(f"{player_name}, you step into the dark woods. The trees whisper as you walk deeper.")
+        print(f"{player.name}, you step into the dark woods. The trees whisper as you walk deeper.")
         add_to_inventory("latern")
+        player.has_lantern = True
 
+
+    # take the right path --- Mountain
     elif decision == "2":
-        print(f"{player_name}, you make your way towards the mountain pass, feeling the cold wind against your face.")
+        print(f"{player.name}, you make your way towards the mountain pass, feeling the cold wind against your face.")
         add_to_inventory("map")
+        player.has_map = True
 
-    elif decision == "3": 
+    # Enter the cave, only if they have latern in inventory 
+    elif decision == "3":
+
+        # if they have latern 
+        if player.has_lantern:
+            print(f"{player.name}, bravely enter the dark cave")
+            print(f"Inside the cave, you find hidden treasure")
+
+        # if no lantern
+        else: 
+            print("It's too dark to explore the cave without a latern")
+            print("Maybe you should find a light source.")
+
+    # stay where you are
+    elif decision == "4": 
         print(f"You stay still, listening to the distant sounds of the forest.")
     else: 
         print("Invalid choice. Please choose 1, 2, or 3.")
@@ -106,6 +133,6 @@ while True:
     play_again = input("Do you want to coninue exploring? (yes or no):").lower()
 
     if play_again != "yes":
-        print(f"Thanks for playing, {player_name}, see you next time.")
+        print(f"Thanks for playing, {player.name}, see you next time.")
 
         break # Exit the loop and end the game
