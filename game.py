@@ -74,6 +74,19 @@ def add_to_inventory(item):
 player = welcome_player()
 describe_area()
 
+# TODO: Add a new menu option for "Search for a hidden valley"
+# TODO: In the cave choice:
+#       - If player.has_lantern is True: allow entry and add "treasure" to inventory
+#       - Else: display a message that it’s too dark
+# TODO: In the valley choice:
+#       - If player.has_map is True: allow entry and add "rare herbs" to inventory
+#       - Else: display a message that you can’t find the valley
+# TODO: After picking up new items, confirm to the player they got it
+# TODO: Save your changes (Ctrl+S or Command+S)
+# TODO: Commit with a message like:
+#       REF unlock new areas based on inventory items
+# TODO: Push your commits to GitHub
+
 #------------------------------------------------------------
 
 # Main game loop
@@ -86,11 +99,12 @@ while True:
     print("\t1. Take the left path into the dark woods.")
     print("\t2. Take the right path toward the mountain pass.")
     print("\t3. Explore a nearby cave.")
-    print("\t4. Stay where you are.")
+    print("\t4. Search for a hidden valley.")
+    print("\t5. Stay where you are.")
     print("\tType 'i' to view your inventory.")
 
 
-    decision = input("What will you do (1,2,3,4 or i): ").lower()
+    decision = input("What will you do (1,2,3,4,5 or i): ").lower()
 
     # open the inventory 
     if decision == 'i':
@@ -102,7 +116,6 @@ while True:
         print(f"{player.name}, you step into the dark woods. The trees whisper as you walk deeper.")
         add_to_inventory("latern")
         player.has_lantern = True
-
 
     # take the right path --- Mountain
     elif decision == "2":
@@ -116,18 +129,28 @@ while True:
         # if they have latern 
         if player.has_lantern:
             print(f"{player.name}, bravely enter the dark cave")
-            print(f"Inside the cave, you find hidden treasure")
+            print(f"Inside the cave, you find hidden treasure!")
+            add_to_inventory(player, "treasure")
 
         # if no lantern
         else: 
             print("It's too dark to explore the cave without a latern")
             print("Maybe you should find a light source.")
 
+    elif decision == "4":
+        # Conditional Logic: need map to find hidden valley 
+        if player.has_map:
+            print(f"{player.name}, you study the map carefully...")
+            print("You discover a hidden path to a beautiful secret valley filled with rare herbs.")
+            add_to_inventory(player, "rare herbs")
+        else:
+            print("You wander in circles, unable to find anything special without a map.")
+
     # stay where you are
-    elif decision == "4": 
+    elif decision == "5": 
         print(f"You stay still, listening to the distant sounds of the forest.")
     else: 
-        print("Invalid choice. Please choose 1, 2, or 3.")
+        print("Invalid choice. Please choose 1, 2, 3, 4, 5, or 'i'.")
     
     # Ask if they want to continue
     play_again = input("Do you want to coninue exploring? (yes or no):").lower()
