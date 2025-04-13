@@ -93,7 +93,7 @@ def explore_hidden_valley(player):
             player.health = 100
             print("Your health is now full.")
             print("You find a treasure chest!")
-            add_to_inventory(player, "Rare Herbs")
+            add_to_inventory("Rare Herbs")
             print("You have found rare herbs.")
 
         if player.has_map == False:
