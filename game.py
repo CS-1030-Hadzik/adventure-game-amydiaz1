@@ -45,7 +45,7 @@ def stay_still(player):
     print("You stay still, you feel as if you are being watched.")
     print("It starts to get to you.")
     player.health -= 10
-    print(f"{player.name}, your health is now {player.health.}.")
+    print(f"{player.name}, your health is now {player.health}.")
 
 
 
@@ -71,12 +71,12 @@ def explore_mountain_pass(player):
 def explore_cave(player):
         print("You walk up to the entracne of the cave."
         "It appears to be dark inside.")
-    if player.has_lantern == True:
+        if player.has_lantern == True:
             print(f"{player.name} you bravely enter the cave")
             print("Inside the cave, you find a treasure chest!")
             add_to_inventory(player, "Treasure")
 
-    if player.has_lantern == False:
+        if player.has_lantern == False:
             print("You can't see far enough to travel safely.")
             print("You need a light source to explore further.")
             print("You feel a precence approaching.")
@@ -87,7 +87,7 @@ def explore_cave(player):
 def explore_hidden_valley(player):
         print("You search for a place called hidden valley.")
 
-    if player.has_map == True:
+        if player.has_map == True:
             print("You find a hidden valley, "
                   "a place of beauty and tranquility.")
             print("You can rest here and regain your strength.")
@@ -97,7 +97,7 @@ def explore_hidden_valley(player):
             add_to_inventory(player, "Rare Herbs")
             print("You have found rare herbs.")
 
-    if player.has_map == False:
+        if player.has_map == False:
             print("You can't seem to find Hidden Valley.")
             print("You may need guidance of some kind.")       
             player.health -= 10 
